@@ -68,7 +68,7 @@ while opcion != 6:
         opcion = int(input("\nEscoge otra opcion o 6 para salir"))
     
     elif opcion == 5:
-        print("\n --- Escogiste eliminar un usuario x_x 😮: --- !!!:\n")
+        print("\n --- Escogiste eliminar un usuario x_x : --- !!!:\n")
         method = "DELETE"
         payload = "{\r\n    \"id\":483,\r\n    \"createdAt\": \"2020-06-19T23:08:50.551Z\"\r\n}"
         test_url = "https://reqres.in/api/users/483"
