@@ -19,11 +19,9 @@ def request(method, url, payload=""):
     response = requests.request(method, url, headers=headers, data = payload)
     results = response.text
     if method != "DELETE":
-        results = json.loads(response.text) #si, no es gran cosa, cambia las comillas, import json decoder requiere de un valor     
+        results = json.loads(response.text)     
     print("tipo de respuesta", response)
     print("metodo utilizado:", method)
-#   print(results)
-    # print(type(results))
     return results
 
 while opcion != 6:
@@ -65,7 +63,7 @@ while opcion != 6:
             print(payload)
             print(test_url)
         update_user()    
-        opcion = int(input("\nEscoge otra opcion o 6 para salir"))
+        opcion = int(input("\nEscoge otra opcion o 6 para salir\n"))
     
     elif opcion == 5:
         print("\n --- Escogiste eliminar un usuario x_x : --- !!!:\n")
@@ -76,7 +74,7 @@ while opcion != 6:
         def delete_user():
             print("usuario eliminado de la:", test_url)
         delete_user()
-        opcion = int(input("\nEscoge otra opcion o 6 para salir"))    
+        opcion = int(input("\nEscoge otra opcion o 6 para salir\n"))    
     
     elif opcion == 6: 
         print() 
