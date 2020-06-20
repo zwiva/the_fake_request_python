@@ -25,26 +25,13 @@ def request(method, url, payload=""):
     # print(type(results))
     return results
 
-# import requests
-
-# url = "https://reqres.in/api/users/"
-
-# payload = "{\r\n    \"id\":483,\r\n    \"email\": \"georgee.bluth@reqres.in\",\r\n\t\"first_name\": \"Georgee\",\r\n\t\"last_name\": \"Bluthe\",\r\n\t\"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg\"\r\n    \"createdAt\": \"2020-06-19T23:08:50.551Z\"\r\n}"
-# headers = {
-#   'Content-Type': 'application/json',
-#   'Cookie': '__cfduid=dca5ca08bedc91466dad35b2d712e20d31592605715'
-# }
-
-# response = requests.request("POST", url, headers=headers, data = payload)
-
-# print(response.text.encode('utf8'))
-
 while opcion != 6:
     if opcion == 1: # mostrar tipo de respuesta
         print("Por defecto el programa usa GET")
         method = "GET"
         results = request(method, test_url)
-        opcion = int(input("Escoge otra opcion o 6 para salir"))
+        opcion = int(input("Escoge otra opcion o 6 para salir\n"))
+    
     elif opcion == 2:
         method = "GET"
         results = request(method, test_url)
@@ -52,7 +39,7 @@ while opcion != 6:
             for i in range(0,3):
                 print(dictionary_users["data"][i]["id"], dictionary_users["data"][i]["first_name"], dictionary_users["data"][i]["last_name"])
         show_users(results)
-        opcion = int(input("Escoge otra opcion o 6 para salir"))
+        opcion = int(input("Escoge otra opcion o 6 para salir\n"))
 
     elif opcion == 3:
         print("Escogiste crear un usuario")
@@ -61,21 +48,22 @@ while opcion != 6:
         results = request(method, test_url, payload)
         def create_user():
             print(payload)
-        create_user()
-        
-        opcion = int(input("Escoge otra opcion o 6 para salir"))        
+        create_user()    
+        opcion = int(input("Escoge otra opcion o 6 para salir\n"))        
     
     elif opcion == 4:
         print("Escogiste actualizar un usuario")
         method = "PUT"
-        results = request(method, test_url)
-
+        payload = "{\r\n    \"id\":483,\r\n    \"createdAt\": \"2020-07-19T23:08:50.551Z\"\r\n}"
+        test_url = "https://reqres.in/api/users/483"
+        results = request(method, test_url, payload)
         def update_user():
-            print("...")
-
-        print("")
-    
+            print("Modifica mes a 2020-07-19")
+            print(payload)
+            print(test_url)
+        update_user()    
         opcion = int(input("Escoge otra opcion o 6 para salir"))
+    
     elif opcion == 5:
         print("Escogiste eliminar un usuario:")
 
