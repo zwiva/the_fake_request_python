@@ -15,7 +15,7 @@ opcion = int(input("""Bienvenido. Escoja una opción:
 
 def request(method, url, payload=""):
     payload = {}
-    headers= {}
+    headers = {}
     response = requests.request(method, url, headers=headers, data = payload)
     results = response.text
     if method != "DELETE":
@@ -24,6 +24,20 @@ def request(method, url, payload=""):
 #   print(results)
     # print(type(results))
     return results
+
+# import requests
+
+# url = "https://reqres.in/api/users/"
+
+# payload = "{\r\n    \"id\":483,\r\n    \"email\": \"georgee.bluth@reqres.in\",\r\n\t\"first_name\": \"Georgee\",\r\n\t\"last_name\": \"Bluthe\",\r\n\t\"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg\"\r\n    \"createdAt\": \"2020-06-19T23:08:50.551Z\"\r\n}"
+# headers = {
+#   'Content-Type': 'application/json',
+#   'Cookie': '__cfduid=dca5ca08bedc91466dad35b2d712e20d31592605715'
+# }
+
+# response = requests.request("POST", url, headers=headers, data = payload)
+
+# print(response.text.encode('utf8'))
 
 while opcion != 6:
     if opcion == 1: # mostrar tipo de respuesta
@@ -39,12 +53,14 @@ while opcion != 6:
                 print(dictionary_users["data"][i]["id"], dictionary_users["data"][i]["first_name"], dictionary_users["data"][i]["last_name"])
         show_users(results)
         opcion = int(input("Escoge otra opcion o 6 para salir"))
+
     elif opcion == 3:
         print("Escogiste crear un usuario")
         method = "POST"
-        results = request(method, test_url)      
+        payload = "{\r\n    \"id\":483,\r\n    \"createdAt\": \"2020-06-19T23:08:50.551Z\"\r\n}"
+        results = request(method, test_url, payload)
         def create_user():
-            print("jajajaja, ya quisiera yo saber hacer eso")
+            print(payload)
         create_user()
         
         opcion = int(input("Escoge otra opcion o 6 para salir"))        
